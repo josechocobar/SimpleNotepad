@@ -20,6 +20,7 @@ class RecyclerViewAdapter internal constructor(
 
     inner class WordViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
         val wordItemView : TextView = itemView.findViewById(R.id.textView)
+        val tituloItemView : TextView = itemView.findViewById(R.id.tvTitulo)
         var customItemClickListener:CustomClickListener? = null
         init{
             itemView.buDeleted.setOnClickListener(this)
@@ -46,6 +47,8 @@ class RecyclerViewAdapter internal constructor(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = words[position]
         holder.wordItemView.text = current.word
+        holder.tituloItemView.text = current.fecha
+
         holder.oncustomItemClickListener(object: CustomClickListener{
             override fun OnItemCustomClickListener(view: View, pos:Int) {
                 //Toast.makeText(mContext, "el boton borrar funciona", Toast.LENGTH_SHORT).show()

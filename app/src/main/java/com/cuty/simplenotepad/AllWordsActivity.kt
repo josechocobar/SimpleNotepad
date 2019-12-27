@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_all_words.*
+import java.util.*
 
 class AllWordsActivity : AppCompatActivity() {
     private lateinit var tvPalabra: EditText
     companion object
     {
         const val EXTRA_REPLY = "com.example.room"
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +28,10 @@ class AllWordsActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val word = tvPalabra.text.toString()
+                MainActivity.currentDate = MainActivity.sdf.format(Date())
+
                 replyIntent.putExtra(EXTRA_REPLY, word)
+
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

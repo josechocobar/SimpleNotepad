@@ -8,6 +8,7 @@ class AplicationRepository(private val dao:Dao){
 
     suspend fun insert(word:Word){
         dao.insert(word)
+
     }
     suspend fun delete(deletedWord:String){
         dao.deleteWord(deletedWord)

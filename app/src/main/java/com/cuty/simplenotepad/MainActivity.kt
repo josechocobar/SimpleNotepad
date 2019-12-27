@@ -12,11 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val newWordsActivityRequestCode = 1
 
     companion object{
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+         var currentDate :String = sdf.format(Date())
         var borrarBandera = 1
         lateinit var activityViewModel: ActivityViewModel
 
@@ -63,8 +67,9 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordsActivityRequestCode && resultCode == Activity.RESULT_OK){
             data?.getStringExtra(AllWordsActivity.EXTRA_REPLY)?.let {
-                val word = Word(it)
-                activityViewModel.insert(word)
+                currentDate = sdf.format(Date())
+                val nota = Word(it, currentDate )
+                activityViewModel.insert(nota)
                 Unit
 
             }
@@ -72,22 +77,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext,"empty", Toast.LENGTH_LONG).show()
         }
     }
-    public fun borrarUnoSolo (view: View){
-        activityViewModel.deleteWord(posicionDeLaLista)
-
-    }
-    fun onClick (view: View){
-        when (borrarBandera){
-            2-> {try{
-                activityViewModel.deleteWord(posicionDeLaLista)
-
-            }catch (ex: Exception){
-                borrarBandera = 1
-            }
-                borrarBandera = 1 }
-
-        }
 
 
-    }
 }

@@ -57,9 +57,9 @@ public abstract class DatabaseService: RoomDatabase() {
             // Not needed if you only populate on creation.
 
 
-            var word = Word("Jose")
+            var word = Word("Jose",MainActivity.currentDate)
             wordDao.insert(word)
-            word = Word("Chocobar")
+            word = Word("Chocobar",MainActivity.currentDate)
             wordDao.insert(word)
         }
 
