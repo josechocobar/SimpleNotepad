@@ -21,11 +21,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
          var currentDate :String = sdf.format(Date())
-        var borrarBandera = 1
         lateinit var activityViewModel: ActivityViewModel
-
-        var posicionDeLaLista:String = ""
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
