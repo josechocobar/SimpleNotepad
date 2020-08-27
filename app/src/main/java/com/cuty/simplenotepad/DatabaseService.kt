@@ -47,21 +47,12 @@ public abstract class DatabaseService: RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.Dao())
+
                     }
                 }
             }
         }
-        suspend fun populateDatabase(wordDao: Dao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
 
-
-            var word = Word("Jose",MainActivity.currentDate)
-            wordDao.insert(word)
-            word = Word("Chocobar",MainActivity.currentDate)
-            wordDao.insert(word)
-        }
 
     }
 
